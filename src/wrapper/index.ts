@@ -1,1 +1,1 @@
-export { SberSalutClient } from './SberSaluteClient';
+export { SberSaluteClient } from './SberSaluteClient';

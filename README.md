@@ -14,7 +14,7 @@ TypeScript SDK for Sber SaluteSpeech (SmartSpeech) API with OAuth 2.0 authentica
 ## Installation
 
 ```bash
-npm install @salutespeech/sdk
+npm install @lobbyboy/salutespeech-sdk
 ```
 
 ## Quick Start
@@ -29,10 +29,12 @@ export SALUTESPEECH_CLIENT_SECRET="your-client-secret"
 ### Basic Usage
 
 ```typescript
-import { SberSalutClient } from '@salutespeech/sdk';
+import { SberSaluteClient } from '@lobbyboy/salutespeech-sdk';
 import * as fs from 'fs';
 
-const client = new SberSalutClient({
+const client = new SberSaluteClient({
+  clientId: 'your-client-id-here',
+  clientSecret: 'your-client-secret-here',
   scope: 'SALUTE_SPEECH_PERS', // or 'SALUTE_SPEECH_CORP'
 });
 
@@ -56,12 +58,12 @@ await new Promise((resolve, reject) => {
 
 ## API Reference
 
-### SberSalutClient
+### SberSaluteClient
 
 ```typescript
-const client = new SberSalutClient({
-  clientId?: string;           // Default: SALUTESPEECH_CLIENT_ID env var
-  clientSecret: string;        // Required, or SALUTESPEECH_CLIENT_SECRET env var
+const client = new SberSaluteClient({
+  clientId: string;            // Required
+  clientSecret: string;        // Required
   scope?: OAuthScope;          // Default: 'SALUTE_SPEECH_PERS'
   timeoutInSeconds?: number;   // Default: 30
   maxRetries?: number;         // Default: 2
@@ -92,8 +94,21 @@ const audio = await client.textToSpeech.synthesize({
 
 #### Available Voices
 
-- `May_24000` - May voice, 24kHz (default)
-- `May_8000` - May voice, 8kHz (for telephony)
+- `Nec_24000` - Наталья, 24kHz
+- `Bys_24000` - Борис, 24kHz
+- `May_24000` - Марфа, 24kHz (default)
+- `Tur_24000` - Тарас, 24kHz
+- `Ost_24000` - Александра, 24kHz
+- `Pon_24000` - Сергей, 24kHz
+- `Kin_24000` - Кира, синтез английского, 24kHz
+
+- `Bys_8000` - Борис (8 кГц) для использования в телефонии
+- `Nec_8000` - Наталья (8 кГц) для использования в телефонии
+- `May_8000` - Марфа (8 кГц) для использования в телефонии
+- `Tur_8000` - Тарас (8 кГц) для использования в телефонии
+- `Ost_8000` - Александра (8 кГц) для использования в телефонии
+- `Pon_8000` - Сергей (8 кГц) для использования в телефонии
+- `Kin_8000` - Kira (8 кГц) синтез английской речи, для использования в телефонии
 
 ## Advanced Usage
 
@@ -113,7 +128,7 @@ import {
   SberSalutAuthError,
   SberSalutRateLimitError,
   SberSalutTimeoutError,
-} from '@salutespeech/sdk';
+} from '@lobbyboy/salutespeech-sdk';
 
 try {
   const audio = await client.textToSpeech.synthesize({ text: 'Привет!' });
@@ -133,7 +148,9 @@ try {
 ### Custom Timeout and Retries
 
 ```typescript
-const client = new SberSalutClient({
+const client = new SberSaluteClient({
+  clientId: process.env.SALUTESPEECH_CLIENT_ID || '',
+  clientSecret: process.env.SALUTESPEECH_CLIENT_SECRET || '',
   timeoutInSeconds: 60,
   maxRetries: 5,
 });
@@ -156,4 +173,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 - [SaluteSpeech Documentation](https://developers.sber.ru/docs/ru/salutespeech/rest/salutespeech-rest-api)
 - [GitHub Repository](https://github.com/pavelgorbunov/salutespeech-sdk)
-- [NPM Package](https://www.npmjs.com/package/@salutespeech/sdk)
+- [NPM Package](https://www.npmjs.com/package/@lobbyboy/salutespeech-sdk)

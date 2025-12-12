@@ -1,9 +1,5 @@
-import { SberSalutClient } from '../src';
+import { SberSaluteClient } from '../src';
 import * as fs from 'fs';
-import * as dotenv from 'dotenv';
-
-// Load environment variables from .env file
-dotenv.config();
 
 /**
  * Basic usage example
@@ -14,8 +10,9 @@ dotenv.config();
  */
 
 async function main() {
-  const client = new SberSalutClient({
-    clientSecret: process.env.SALUTESPEECH_CLIENT_SECRET || '',
+  const client = new SberSaluteClient({
+    clientId: 'your-client-id-here',
+    clientSecret: 'your-client-secret-here',
     scope: 'SALUTE_SPEECH_PERS',
   });
 

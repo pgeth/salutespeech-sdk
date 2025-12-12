@@ -39,8 +39,8 @@ export function normalizeClientOptions<T extends BaseClientOptions>(
 ): NormalizedClientOptions<T> {
   const headers = mergeHeaders(
     {
-      'User-Agent': '@salutespeech/sdk/1.0.0',
-      'X-SDK-Name': '@salutespeech/sdk',
+      'User-Agent': '@lobbyboy/salutespeech-sdk/1.0.0',
+      'X-SDK-Name': '@lobbyboy/salutespeech-sdk',
       'X-SDK-Version': '1.0.0',
       'X-Runtime': core.runtime.RUNTIME.type,
       'X-Runtime-Version': core.runtime.RUNTIME.version,

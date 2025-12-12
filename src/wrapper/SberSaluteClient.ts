@@ -1,18 +1,17 @@
-import * as errors from '../errors';
 import { TokenManager } from '../core/auth';
 import { TextToSpeechClient } from '../api/resources/textToSpeech';
 import type { BaseClientOptions } from '../BaseClient';
 import type { OAuthScope } from '../api/resources/auth/types';
 
-export declare namespace SberSalutClient {
+export declare namespace SberSaluteClient {
   interface Options extends BaseClientOptions {
     /**
-     * Your SaluteSpeech Client ID. Defaults to SALUTESPEECH_CLIENT_ID
+     * Your SaluteSpeech Client ID (required)
      */
-    clientId?: string;
+    clientId: string;
 
     /**
-     * Your SaluteSpeech Client Secret. Defaults to SALUTESPEECH_CLIENT_SECRET
+     * Your SaluteSpeech Client Secret (required)
      */
     clientSecret: string;
 
@@ -23,37 +22,24 @@ export declare namespace SberSalutClient {
   }
 }
 
-export class SberSalutClient {
-  protected readonly _options: SberSalutClient.Options;
+export class SberSaluteClient {
+  protected readonly _options: SberSaluteClient.Options;
   protected tokenManager: TokenManager;
 
   // Lazy-loaded resource clients
   protected _textToSpeech: TextToSpeechClient | undefined;
 
-  constructor(options: SberSalutClient.Options) {
-    const clientId = options.clientId ?? process.env.SALUTESPEECH_CLIENT_ID;
-    const clientSecret =
-      options.clientSecret ?? process.env.SALUTESPEECH_CLIENT_SECRET;
-
-    if (clientId == null || clientSecret == null) {
-      throw new errors.SberSalutError({
-        message:
-          'Please provide clientId and clientSecret or set SALUTESPEECH_CLIENT_ID and SALUTESPEECH_CLIENT_SECRET environment variables.',
-      });
-    }
-
+  constructor(options: SberSaluteClient.Options) {
     this._options = {
       ...options,
-      clientId,
-      clientSecret,
       scope: options.scope ?? 'SALUTE_SPEECH_PERS',
     };
 
     // Initialize TokenManager
     this.tokenManager = new TokenManager({
-      clientId: clientId as string,
-      clientSecret: clientSecret as string,
-      scope: (options.scope as OAuthScope) ?? 'SALUTE_SPEECH_PERS',
+      clientId: options.clientId,
+      clientSecret: options.clientSecret,
+      scope: options.scope ?? 'SALUTE_SPEECH_PERS',
     });
   }
 

@@ -1,22 +1,18 @@
 import {
-  SberSalutClient,
+  SberSaluteClient,
   SberSalutAuthError,
   SberSalutRateLimitError,
 } from '../src';
 import * as fs from 'fs';
-import * as dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
 
 /**
  * Example with custom options and error handling
  */
 
 async function main() {
-  const client = new SberSalutClient({
-    clientId: process.env.SALUTESPEECH_CLIENT_ID,
-    clientSecret: process.env.SALUTESPEECH_CLIENT_SECRET || '',
+  const client = new SberSaluteClient({
+    clientId: 'your-client-id-here',
+    clientSecret: 'your-client-secret-here',
     scope: 'SALUTE_SPEECH_PERS',
     timeoutInSeconds: 60, // Custom timeout
     maxRetries: 3, // Custom retry count
