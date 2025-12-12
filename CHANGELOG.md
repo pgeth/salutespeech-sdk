@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-12-12
+
+### Fixed
+- Fixed TypeScript type mismatch in streaming API: changed return type from `ReadableStream<Uint8Array>` (Web API) to `Readable` (Node.js stream) to match actual behavior from node-fetch v2
+- Updated `simpleFetchStream` function type signature in SimpleFetcher
+- Updated `TextToSpeechClient.synthesize` method return type
+
 ## [1.0.0] - 2025-12-11
 
 ### Added

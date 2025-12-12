@@ -5,6 +5,7 @@ import { simpleFetchStream } from '../../../../core/fetcher/SimpleFetcher';
 import type { BaseClientOptions, BaseRequestOptions, NormalizedClientOptions } from '../../../../BaseClient';
 import type { SynthesizeRequest } from './requests';
 import { normalizeClientOptions } from '../../../../BaseClient';
+import { Readable } from 'stream';
 
 export class TextToSpeechClient {
   protected readonly _options: NormalizedClientOptions<BaseClientOptions>;
@@ -24,7 +25,7 @@ export class TextToSpeechClient {
   public async synthesize(
     request: SynthesizeRequest,
     requestOptions?: BaseRequestOptions,
-  ): Promise<ReadableStream<Uint8Array>> {
+  ): Promise<Readable> {
     // Validate text length
     if (request.text.length > 4000) {
       throw new errors.SberSalutError({

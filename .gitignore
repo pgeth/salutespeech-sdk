@@ -35,3 +35,6 @@ yarn-error.log*
 
 # Testing
 .jest/
+
+BaseClient.d.ts.map
+index.d.ts.map

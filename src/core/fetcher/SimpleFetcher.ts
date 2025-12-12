@@ -5,6 +5,7 @@
 
 import nodeFetch from 'node-fetch';
 import https from 'https';
+import { Readable } from 'stream';
 
 // Always use node-fetch for better compatibility
 // (Node.js native fetch has issues with some HTTPS endpoints)
@@ -214,8 +215,8 @@ export async function simpleFetchStream(
   text: string,
   headers: Record<string, string> = {},
   queryParams?: Record<string, string | number | boolean>
-): Promise<SimpleFetcherResponse<ReadableStream<Uint8Array>>> {
-  return simpleFetch<ReadableStream<Uint8Array>>({
+): Promise<SimpleFetcherResponse<Readable>> {
+  return simpleFetch<Readable>({
     url,
     method: 'POST',
     headers: {
