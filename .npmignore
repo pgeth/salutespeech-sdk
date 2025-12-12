@@ -1,0 +1,30 @@
+# Source files
+src/
+tests/
+examples/
+
+# Build config
+tsconfig.json
+jest.config.mjs
+biome.json
+
+# CI/CD
+.github/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (keep README)
+*.md
+!README.md
+dreamy-crunching-pretzel.md
+
+# Development files
+.gitignore
+.npmignore
+.env*
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,72 @@
+{
+  "name": "@salutespeech/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for Sber SaluteSpeech (SmartSpeech) API with OAuth 2.0 and streaming TTS",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pavelgorbunov/salutespeech-sdk.git"
+  },
+  "license": "MIT",
+  "author": "Pavel Gorbunov",
+  "keywords": [
+    "sber",
+    "salutespeech",
+    "smartspeech",
+    "speech",
+    "tts",
+    "text-to-speech",
+    "oauth",
+    "sdk",
+    "typescript"
+  ],
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "**/*.js.map",
+    "!node_modules",
+    "!tests",
+    "!examples",
+    "!*.test.*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "prepack": "npm run build && cp -rv dist/. .",
+    "postpack": "rimraf *.js *.d.ts *.js.map api core errors utils wrapper",
+    "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "test:sdk": "npm run build && node test-sdk.js",
+    "test:sdk:ts": "npx ts-node test-sdk.ts",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --fix .",
+    "check": "biome check .",
+    "check:fix": "biome check --fix ."
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.1",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^18.19.70",
+    "@types/node-fetch": "^2.6.12",
+    "@types/uuid": "^10.0.0",
+    "dotenv": "^17.2.3",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "~5.7.2"
+  }
+}
