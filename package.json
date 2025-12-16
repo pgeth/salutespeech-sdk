@@ -1,6 +1,6 @@
 {
   "name": "@lobbyboy/salutespeech-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TypeScript SDK for Sber SaluteSpeech (SmartSpeech) API with OAuth 2.0 and streaming TTS",
   "private": false,
   "repository": {
