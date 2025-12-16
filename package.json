@@ -5,7 +5,7 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/pavelgorbunov/salutespeech-sdk.git"
+    "url": "https://github.com/pgeth/salutespeech-sdk.git"
   },
   "license": "MIT",
   "author": "Pavel Gorbunov",
